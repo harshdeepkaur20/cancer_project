@@ -140,10 +140,10 @@ elif page == "Prediction":
                     inputs[col] = encoders[col].transform([val])[0]
                 else:  # numeric → number input
                     X[col] = pd.to_numeric(X[col], errors="coerce")
-inputs[col] = st.number_input(
-    f"{col}",
-    value=float(X[col].fillna(X[col].median()).mean())
-)
+                    inputs[col] = st.number_input(
+                        f"{col}",
+                        value=float(X[col].fillna(X[col].median()).mean())
+                        )
 
             if st.button("Predict"):
                 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
